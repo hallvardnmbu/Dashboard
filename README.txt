@@ -5,10 +5,11 @@ explore data, in addition to some simple interactive forecasting.
 
 IMPORTANT
 ---------
-* To run locally, modify the API credentials at the top of the 'functions.fetching'-file.
-* Must have Cassandra running locally.
+* Modify the API credential paths at the top of the 'functions.fetching'-file.
+* Must have Cassandra running.
 
 USAGE
 -----
 * (Cassandra must be running.)
-* streamsync run Dashboard/
+* Run the following command:
+  -> streamsync run Dashboard/
