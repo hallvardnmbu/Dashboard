@@ -1,0 +1,8 @@
+stats
+numpy
+pandas
+plotly
+pyspark
+cassandra
+streamsync
+statsmodels

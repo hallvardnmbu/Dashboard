@@ -1,0 +1,2359 @@
+{
+    "metadata": {
+        "streamsync_version": "0.2.8"
+    },
+    "components": {
+        "root": {
+            "id": "root",
+            "type": "root",
+            "content": {
+                "appName": "IND320"
+            },
+            "parentId": null,
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "c0f99a9e-5004-4e75-a6c6-36f17490b134": {
+            "id": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "type": "page",
+            "content": {
+                "pageMode": "compact",
+                "emptinessColor": "#aad3df",
+                "key": "FISH LICE ALL"
+            },
+            "parentId": "root",
+            "position": 1,
+            "handlers": {
+                "ss-page-open": "update_plot_fish"
+            },
+            "visible": true
+        },
+        "b8usconersfajh5g": {
+            "id": "b8usconersfajh5g",
+            "type": "page",
+            "content": {
+                "key": "INSTRUCTIONS",
+                "emptinessColor": "#aad3df"
+            },
+            "parentId": "root",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "e9oa0hotj48f73od": {
+            "id": "e9oa0hotj48f73od",
+            "type": "page",
+            "content": {
+                "key": "WEATHER",
+                "emptinessColor": "#aad3df"
+            },
+            "parentId": "root",
+            "position": 3,
+            "handlers": {
+                "ss-page-open": "update_plot_weather"
+            },
+            "visible": true
+        },
+        "kkndinfi5oz8uga2": {
+            "id": "kkndinfi5oz8uga2",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plot.pd}"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "ysl32i0wuxb8sndt": {
+            "id": "ysl32i0wuxb8sndt",
+            "type": "header",
+            "content": {
+                "text": "FISH LICE",
+                "emptinessColor": "#143439",
+                "accentColor": "#bcdab1"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "639yjfokqms8l74n": {
+            "id": "639yjfokqms8l74n",
+            "type": "heading",
+            "content": {
+                "text": "ALL LOCATIONS",
+                "headingType": "h1"
+            },
+            "parentId": "ysl32i0wuxb8sndt",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "7wmk52spea3uqf1c": {
+            "id": "7wmk52spea3uqf1c",
+            "type": "page",
+            "content": {
+                "key": "NORWAY MAP",
+                "emptinessColor": "#aad3df"
+            },
+            "parentId": "root",
+            "position": 0,
+            "handlers": {
+                "ss-page-open": "plot_norway"
+            },
+            "visible": true
+        },
+        "r6zi5ajvwcolv8ms": {
+            "id": "r6zi5ajvwcolv8ms",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plot.norway}"
+            },
+            "parentId": "7wmk52spea3uqf1c",
+            "position": 0,
+            "handlers": {
+                "plotly-click": "map_click"
+            },
+            "visible": true
+        },
+        "dsjr70g0djsshiug": {
+            "id": "dsjr70g0djsshiug",
+            "type": "sidebar",
+            "content": {
+                "sidebarBackgroundColor": "#bcdab1"
+            },
+            "parentId": "7wmk52spea3uqf1c",
+            "position": -2,
+            "handlers": {},
+            "visible": true
+        },
+        "jsefaor189kzojkj": {
+            "id": "jsefaor189kzojkj",
+            "type": "columns",
+            "content": {},
+            "parentId": "dsjr70g0djsshiug",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "hpts3g972te7vlx7": {
+            "id": "hpts3g972te7vlx7",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "jsefaor189kzojkj",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "636vqegv6k3cuv6i": {
+            "id": "636vqegv6k3cuv6i",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE ALL LOCATIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "hpts3g972te7vlx7",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE ALL"
+            },
+            "visible": true
+        },
+        "6hehjdyn2rldtjg3": {
+            "id": "6hehjdyn2rldtjg3",
+            "type": "columns",
+            "content": {},
+            "parentId": "dsjr70g0djsshiug",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "vmzr92dwhkr5nrh6": {
+            "id": "vmzr92dwhkr5nrh6",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "6hehjdyn2rldtjg3",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "nngz86y3605uh99w": {
+            "id": "nngz86y3605uh99w",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE @{parameter.locality.name}",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "vmzr92dwhkr5nrh6",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE SPECIFIC"
+            },
+            "visible": true
+        },
+        "y7y1szvv7tnobvuz": {
+            "id": "y7y1szvv7tnobvuz",
+            "type": "columns",
+            "content": {},
+            "parentId": "dsjr70g0djsshiug",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "ym3ksd12oq2a8gtt": {
+            "id": "ym3ksd12oq2a8gtt",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "y7y1szvv7tnobvuz",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "oectuyxjy22jjwl8": {
+            "id": "oectuyxjy22jjwl8",
+            "type": "section",
+            "content": {
+                "title": "WEATHER",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "ym3ksd12oq2a8gtt",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_WEATHER"
+            },
+            "visible": true
+        },
+        "nsymr17gn0m9lk8f": {
+            "id": "nsymr17gn0m9lk8f",
+            "type": "columns",
+            "content": {},
+            "parentId": "dsjr70g0djsshiug",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "fxpiy9d0u752ytl0": {
+            "id": "fxpiy9d0u752ytl0",
+            "type": "columns",
+            "content": {},
+            "parentId": "dsjr70g0djsshiug",
+            "position": 5,
+            "handlers": {},
+            "visible": true
+        },
+        "y3v48swdkaqkkw3d": {
+            "id": "y3v48swdkaqkkw3d",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "fxpiy9d0u752ytl0",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "4zgg7heb17thxr5u": {
+            "id": "4zgg7heb17thxr5u",
+            "type": "section",
+            "content": {
+                "title": "INSTRUCTIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "y3v48swdkaqkkw3d",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_INSTRUCTIONS"
+            }
+        },
+        "lozun5h3evz8tpmk": {
+            "id": "lozun5h3evz8tpmk",
+            "type": "section",
+            "content": {
+                "title": "DOWNLOAD DATA",
+                "snapMode": "no",
+                "containerBackgroundColor": "#bcdab1",
+                "separatorColor": "#143439"
+            },
+            "parentId": "dsjr70g0djsshiug",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_NORWAY MAP"
+            },
+            "visible": true
+        },
+        "c56hg8ifege7xa3r": {
+            "id": "c56hg8ifege7xa3r",
+            "type": "columns",
+            "content": {},
+            "parentId": "7wmk52spea3uqf1c",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "jqfumhu01b6pjzxo": {
+            "id": "jqfumhu01b6pjzxo",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "c56hg8ifege7xa3r",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "lv7tgomgwhpgeku9": {
+            "id": "lv7tgomgwhpgeku9",
+            "type": "radioinput",
+            "content": {
+                "label": "DOWNLOAD DATA FOR",
+                "options": "{\n  \"fish\": \"Fish lice for all locations\",\n  \"locality\": \"Fish lice for locality @{selection.id}\",\n  \"weather\": \"Weather data around locality @{selection.id}\"\n}",
+                "orientation": "vertical"
+            },
+            "parentId": "jqfumhu01b6pjzxo",
+            "position": 0,
+            "handlers": {
+                "ss-option-change": "download_change"
+            },
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "parameter.download"
+            },
+            "visible": true
+        },
+        "fni0thql5un8a6rk": {
+            "id": "fni0thql5un8a6rk",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "title": "",
+                "verticalAlignment": "center"
+            },
+            "parentId": "c56hg8ifege7xa3r",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "vs47wl16tjzw6q69": {
+            "id": "vs47wl16tjzw6q69",
+            "type": "columns",
+            "content": {},
+            "parentId": "7wmk52spea3uqf1c",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "85arr9gu31dloijv": {
+            "id": "85arr9gu31dloijv",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vs47wl16tjzw6q69",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "3m72zuwf0cmds4sz": {
+            "id": "3m72zuwf0cmds4sz",
+            "type": "sliderinput",
+            "content": {
+                "label": "FROM YEAR",
+                "minValue": "2005",
+                "maxValue": "2023",
+                "stepSize": "1",
+                "cssClasses": ""
+            },
+            "parentId": "85arr9gu31dloijv",
+            "position": 0,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "parameter.from_year"
+            },
+            "visible": true
+        },
+        "7fftl2icdutmrfri": {
+            "id": "7fftl2icdutmrfri",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vs47wl16tjzw6q69",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "ye0mqc7r4mb65o48": {
+            "id": "ye0mqc7r4mb65o48",
+            "type": "sliderinput",
+            "content": {
+                "label": "TO YEAR",
+                "minValue": "2005",
+                "maxValue": "2023",
+                "stepSize": "1"
+            },
+            "parentId": "7fftl2icdutmrfri",
+            "position": 0,
+            "handlers": {},
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "parameter.to_year"
+            },
+            "visible": true
+        },
+        "83v23sz1d5u1hpbv": {
+            "id": "83v23sz1d5u1hpbv",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vs47wl16tjzw6q69",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "fjmu0ofn1lo5muad": {
+            "id": "fjmu0ofn1lo5muad",
+            "type": "button",
+            "content": {
+                "text": "DOWNLOAD",
+                "buttonColor": "#f3efe8"
+            },
+            "parentId": "83v23sz1d5u1hpbv",
+            "position": 0,
+            "handlers": {
+                "ss-click": "download"
+            },
+            "visible": true
+        },
+        "1abau8egbmxt47je": {
+            "id": "1abau8egbmxt47je",
+            "type": "page",
+            "content": {
+                "key": "FISH LICE SPECIFIC",
+                "containerBackgroundColor": "#aad3df",
+                "emptinessColor": "#aad3df"
+            },
+            "parentId": "root",
+            "position": 2,
+            "handlers": {
+                "ss-page-open": "update_plot_locality"
+            },
+            "visible": true
+        },
+        "q7k4uw68lzmqteun": {
+            "id": "q7k4uw68lzmqteun",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plot.lice}"
+            },
+            "parentId": "1abau8egbmxt47je",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "sw42jmn2t7n335dx": {
+            "id": "sw42jmn2t7n335dx",
+            "type": "message",
+            "content": {
+                "message": "%Downloading",
+                "loadingColor": "#80bfa9"
+            },
+            "parentId": "7wmk52spea3uqf1c",
+            "position": 3,
+            "handlers": {},
+            "visible": "flag.downloading"
+        },
+        "wzrwmwjb1uaopbyc": {
+            "id": "wzrwmwjb1uaopbyc",
+            "type": "sidebar",
+            "content": {
+                "sidebarBackgroundColor": "#bcdab1"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": -2,
+            "handlers": {},
+            "visible": true
+        },
+        "6cf5dld62pavujew": {
+            "id": "6cf5dld62pavujew",
+            "type": "columns",
+            "content": {},
+            "parentId": "wzrwmwjb1uaopbyc",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "n3lc34kdp4qao5du": {
+            "id": "n3lc34kdp4qao5du",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "6cf5dld62pavujew",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "7ng22ikm94convi1": {
+            "id": "7ng22ikm94convi1",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE ALL LOCATIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#bcdab1",
+                "separatorColor": "#143439"
+            },
+            "parentId": "n3lc34kdp4qao5du",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE ALL"
+            },
+            "visible": true
+        },
+        "ucdispgxmtvzscz8": {
+            "id": "ucdispgxmtvzscz8",
+            "type": "columns",
+            "content": {},
+            "parentId": "wzrwmwjb1uaopbyc",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "3cwsiq5ufsur051r": {
+            "id": "3cwsiq5ufsur051r",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "ucdispgxmtvzscz8",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "md9ptbo5wjqvpyph": {
+            "id": "md9ptbo5wjqvpyph",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE @{parameter.locality.name}",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "3cwsiq5ufsur051r",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE SPECIFIC"
+            },
+            "visible": true
+        },
+        "3urxedbhwvp0gwcq": {
+            "id": "3urxedbhwvp0gwcq",
+            "type": "columns",
+            "content": {},
+            "parentId": "wzrwmwjb1uaopbyc",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "iz2ms7yrtrwkqrcp": {
+            "id": "iz2ms7yrtrwkqrcp",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "3urxedbhwvp0gwcq",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "3wdokf64ntndh92n": {
+            "id": "3wdokf64ntndh92n",
+            "type": "section",
+            "content": {
+                "title": "WEATHER",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "iz2ms7yrtrwkqrcp",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_WEATHER"
+            },
+            "visible": true
+        },
+        "q61igv3t4t8whk62": {
+            "id": "q61igv3t4t8whk62",
+            "type": "columns",
+            "content": {},
+            "parentId": "wzrwmwjb1uaopbyc",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "a9hp32ser598rw2n": {
+            "id": "a9hp32ser598rw2n",
+            "type": "columns",
+            "content": {},
+            "parentId": "wzrwmwjb1uaopbyc",
+            "position": 5,
+            "handlers": {},
+            "visible": true
+        },
+        "ia5z1c85jm44nfl3": {
+            "id": "ia5z1c85jm44nfl3",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "a9hp32ser598rw2n",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "8rv34b5hdmzqewjx": {
+            "id": "8rv34b5hdmzqewjx",
+            "type": "section",
+            "content": {
+                "title": "INSTRUCTIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "ia5z1c85jm44nfl3",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_INSTRUCTIONS"
+            }
+        },
+        "wa4ua8tmela0mtsw": {
+            "id": "wa4ua8tmela0mtsw",
+            "type": "section",
+            "content": {
+                "title": "DOWNLOAD DATA",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "wzrwmwjb1uaopbyc",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_NORWAY MAP"
+            },
+            "visible": true
+        },
+        "e9up1zcy7fz2zanu": {
+            "id": "e9up1zcy7fz2zanu",
+            "type": "sidebar",
+            "content": {
+                "sidebarBackgroundColor": "#bcdab1"
+            },
+            "parentId": "1abau8egbmxt47je",
+            "position": -2,
+            "handlers": {},
+            "visible": true
+        },
+        "401fcp67getnpwf2": {
+            "id": "401fcp67getnpwf2",
+            "type": "columns",
+            "content": {},
+            "parentId": "e9up1zcy7fz2zanu",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "i8x475b7v0gflam3": {
+            "id": "i8x475b7v0gflam3",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "401fcp67getnpwf2",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "1k4qi33e1l803cgh": {
+            "id": "1k4qi33e1l803cgh",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE ALL LOCATIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "i8x475b7v0gflam3",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE ALL"
+            },
+            "visible": true
+        },
+        "m55484t1y9fxs0tv": {
+            "id": "m55484t1y9fxs0tv",
+            "type": "columns",
+            "content": {},
+            "parentId": "e9up1zcy7fz2zanu",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "y6gewzyc9ry5pp5y": {
+            "id": "y6gewzyc9ry5pp5y",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "m55484t1y9fxs0tv",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "8n8i28dwk1j61kkk": {
+            "id": "8n8i28dwk1j61kkk",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE @{parameter.locality.name}",
+                "snapMode": "no",
+                "containerBackgroundColor": "#bcdab1",
+                "separatorColor": "#143439"
+            },
+            "parentId": "y6gewzyc9ry5pp5y",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE SPECIFIC"
+            },
+            "visible": true
+        },
+        "nkqz7vuivigntrw0": {
+            "id": "nkqz7vuivigntrw0",
+            "type": "columns",
+            "content": {},
+            "parentId": "e9up1zcy7fz2zanu",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "ttsbvqfn41etlk1d": {
+            "id": "ttsbvqfn41etlk1d",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "nkqz7vuivigntrw0",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "j8caus71jwezt4wn": {
+            "id": "j8caus71jwezt4wn",
+            "type": "section",
+            "content": {
+                "title": "WEATHER",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "ttsbvqfn41etlk1d",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_WEATHER"
+            },
+            "visible": true
+        },
+        "x2s32whmx8cpyolb": {
+            "id": "x2s32whmx8cpyolb",
+            "type": "columns",
+            "content": {},
+            "parentId": "e9up1zcy7fz2zanu",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "v68f2n3tju5kz8rb": {
+            "id": "v68f2n3tju5kz8rb",
+            "type": "columns",
+            "content": {},
+            "parentId": "e9up1zcy7fz2zanu",
+            "position": 5,
+            "handlers": {},
+            "visible": true
+        },
+        "jr3pikknaarh5vif": {
+            "id": "jr3pikknaarh5vif",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "v68f2n3tju5kz8rb",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "rei06xqfaspprhnv": {
+            "id": "rei06xqfaspprhnv",
+            "type": "section",
+            "content": {
+                "title": "INSTRUCTIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "jr3pikknaarh5vif",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_INSTRUCTIONS"
+            }
+        },
+        "fstu3nbdlclkucmq": {
+            "id": "fstu3nbdlclkucmq",
+            "type": "section",
+            "content": {
+                "title": "DOWNLOAD DATA",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "e9up1zcy7fz2zanu",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_NORWAY MAP"
+            },
+            "visible": true
+        },
+        "dvqhtfpr02vghh8x": {
+            "id": "dvqhtfpr02vghh8x",
+            "type": "sidebar",
+            "content": {
+                "sidebarBackgroundColor": "#bcdab1"
+            },
+            "parentId": "e9oa0hotj48f73od",
+            "position": -2,
+            "handlers": {},
+            "visible": true
+        },
+        "a9zw4rv61uirs80h": {
+            "id": "a9zw4rv61uirs80h",
+            "type": "columns",
+            "content": {},
+            "parentId": "dvqhtfpr02vghh8x",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "38ql52m5mxesgreq": {
+            "id": "38ql52m5mxesgreq",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "a9zw4rv61uirs80h",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "lx2x0pp7ohzdvd8f": {
+            "id": "lx2x0pp7ohzdvd8f",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE ALL LOCATIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "38ql52m5mxesgreq",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE ALL"
+            },
+            "visible": true
+        },
+        "xoqwgasjsico4u9n": {
+            "id": "xoqwgasjsico4u9n",
+            "type": "columns",
+            "content": {},
+            "parentId": "dvqhtfpr02vghh8x",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "t7sef3zvmhhoymwh": {
+            "id": "t7sef3zvmhhoymwh",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "xoqwgasjsico4u9n",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "d86ejbymirql4qil": {
+            "id": "d86ejbymirql4qil",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE @{parameter.locality.name}",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "t7sef3zvmhhoymwh",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE SPECIFIC"
+            },
+            "visible": true
+        },
+        "nsjkbnuh4mg7axfr": {
+            "id": "nsjkbnuh4mg7axfr",
+            "type": "columns",
+            "content": {},
+            "parentId": "dvqhtfpr02vghh8x",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "9ckuy5nkeoeii1cp": {
+            "id": "9ckuy5nkeoeii1cp",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "nsjkbnuh4mg7axfr",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "4xw96ru2oe6l7h8p": {
+            "id": "4xw96ru2oe6l7h8p",
+            "type": "section",
+            "content": {
+                "title": "WEATHER",
+                "snapMode": "no",
+                "containerBackgroundColor": "#bcdab1",
+                "separatorColor": "#143439"
+            },
+            "parentId": "9ckuy5nkeoeii1cp",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_WEATHER"
+            },
+            "visible": true
+        },
+        "r2go6a2o85e0ipst": {
+            "id": "r2go6a2o85e0ipst",
+            "type": "columns",
+            "content": {},
+            "parentId": "dvqhtfpr02vghh8x",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "t1njg8rg56tmf50y": {
+            "id": "t1njg8rg56tmf50y",
+            "type": "columns",
+            "content": {},
+            "parentId": "dvqhtfpr02vghh8x",
+            "position": 5,
+            "handlers": {},
+            "visible": true
+        },
+        "qzoqcgsenmann7fr": {
+            "id": "qzoqcgsenmann7fr",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "t1njg8rg56tmf50y",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "m510nl7i86qft5pe": {
+            "id": "m510nl7i86qft5pe",
+            "type": "section",
+            "content": {
+                "title": "INSTRUCTIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "qzoqcgsenmann7fr",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_INSTRUCTIONS"
+            }
+        },
+        "svnzd1s6hsrmtewh": {
+            "id": "svnzd1s6hsrmtewh",
+            "type": "section",
+            "content": {
+                "title": "DOWNLOAD DATA",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "dvqhtfpr02vghh8x",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_NORWAY MAP"
+            },
+            "visible": true
+        },
+        "e6hdq50pvxek4ett": {
+            "id": "e6hdq50pvxek4ett",
+            "type": "sidebar",
+            "content": {
+                "sidebarBackgroundColor": "#bcdab1"
+            },
+            "parentId": "b8usconersfajh5g",
+            "position": -2,
+            "handlers": {},
+            "visible": true
+        },
+        "bg6fmyhwcf76gmna": {
+            "id": "bg6fmyhwcf76gmna",
+            "type": "columns",
+            "content": {},
+            "parentId": "e6hdq50pvxek4ett",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "qj40dku3nxkfubfv": {
+            "id": "qj40dku3nxkfubfv",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "bg6fmyhwcf76gmna",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "7t8gzsvd68zb0va5": {
+            "id": "7t8gzsvd68zb0va5",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE ALL LOCATIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "qj40dku3nxkfubfv",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE ALL"
+            },
+            "visible": true
+        },
+        "ek314fum4elynaqc": {
+            "id": "ek314fum4elynaqc",
+            "type": "columns",
+            "content": {},
+            "parentId": "e6hdq50pvxek4ett",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "ni29x3u14q5tbq88": {
+            "id": "ni29x3u14q5tbq88",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "ek314fum4elynaqc",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "fhqldg920z46nguh": {
+            "id": "fhqldg920z46nguh",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE @{parameter.locality.name}",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "ni29x3u14q5tbq88",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE SPECIFIC"
+            },
+            "visible": true
+        },
+        "i06k3s3xg829x5fj": {
+            "id": "i06k3s3xg829x5fj",
+            "type": "columns",
+            "content": {},
+            "parentId": "e6hdq50pvxek4ett",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "oydm66erbtowaqd7": {
+            "id": "oydm66erbtowaqd7",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "i06k3s3xg829x5fj",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "uys7k3n3065y8ky5": {
+            "id": "uys7k3n3065y8ky5",
+            "type": "section",
+            "content": {
+                "title": "WEATHER",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "oydm66erbtowaqd7",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_WEATHER"
+            },
+            "visible": true
+        },
+        "dp3ijxpx6r0lwlyu": {
+            "id": "dp3ijxpx6r0lwlyu",
+            "type": "columns",
+            "content": {},
+            "parentId": "e6hdq50pvxek4ett",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "nrwlpgzvpaczgrl6": {
+            "id": "nrwlpgzvpaczgrl6",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "dp3ijxpx6r0lwlyu",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "e81ouhd6ewajsblc": {
+            "id": "e81ouhd6ewajsblc",
+            "type": "section",
+            "content": {
+                "title": "INSTRUCTIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#bcdab1",
+                "separatorColor": "#143439"
+            },
+            "parentId": "e6hdq50pvxek4ett",
+            "position": 5,
+            "handlers": {
+                "click": "$goToPage_INSTRUCTIONS"
+            }
+        },
+        "ldyfye811h5yxh2s": {
+            "id": "ldyfye811h5yxh2s",
+            "type": "section",
+            "content": {
+                "title": "DOWNLOAD DATA",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "e6hdq50pvxek4ett",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_NORWAY MAP"
+            },
+            "visible": true
+        },
+        "vfc9fo8f7dfn553v": {
+            "id": "vfc9fo8f7dfn553v",
+            "type": "header",
+            "content": {
+                "text": "FISH LICE",
+                "emptinessColor": "#143439",
+                "accentColor": "#bcdab1"
+            },
+            "parentId": "1abau8egbmxt47je",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "v9c18wv6h1v7yp5t": {
+            "id": "v9c18wv6h1v7yp5t",
+            "type": "heading",
+            "content": {
+                "text": "@{parameter.locality.name}",
+                "headingType": "h1"
+            },
+            "parentId": "vfc9fo8f7dfn553v",
+            "position": 7,
+            "handlers": {},
+            "visible": true
+        },
+        "f42jjyz8fezcbgqs": {
+            "id": "f42jjyz8fezcbgqs",
+            "type": "header",
+            "content": {
+                "text": "WEATHER",
+                "emptinessColor": "#143439",
+                "accentColor": "#bcdab1"
+            },
+            "parentId": "e9oa0hotj48f73od",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "m3zqqyy5nfh5ijjl": {
+            "id": "m3zqqyy5nfh5ijjl",
+            "type": "heading",
+            "content": {
+                "text": "AROUND LOCALITY @{parameter.locality.name}",
+                "headingType": "h1"
+            },
+            "parentId": "f42jjyz8fezcbgqs",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "kcfqm3kf1gjvvmdy": {
+            "id": "kcfqm3kf1gjvvmdy",
+            "type": "header",
+            "content": {
+                "text": "INFORMATION & INSTRUCTIONS",
+                "emptinessColor": "#143439",
+                "accentColor": "#bcdab1"
+            },
+            "parentId": "b8usconersfajh5g",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "wl4lk32ftpn462th": {
+            "id": "wl4lk32ftpn462th",
+            "type": "columns",
+            "content": {},
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "hvi1rp7q2snm5mht": {
+            "id": "hvi1rp7q2snm5mht",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "wl4lk32ftpn462th",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "7dtgy5q8g7qt7lbl": {
+            "id": "7dtgy5q8g7qt7lbl",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "wl4lk32ftpn462th",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "mz9due32dpjcs22l": {
+            "id": "mz9due32dpjcs22l",
+            "type": "selectinput",
+            "content": {
+                "label": "",
+                "options": "{\n  \"line\": \"Line\",\n  \"density\": \"Density\",\n  \"bar\": \"Bar\"\n}",
+                "placeholder": "PLOT TYPE",
+                "maximumCount": "1",
+                "selectedColor": "#bcdab1",
+                "separatorColor": "#bcdab1",
+                "containerBackgroundColor": "#f3efe8",
+                "accentColor": "#bcdab1",
+                "chipTextColor": "#143439"
+            },
+            "parentId": "hvi1rp7q2snm5mht",
+            "position": 0,
+            "handlers": {
+                "ss-option-change": "plot_temporary",
+                "click": "set_page_fish"
+            },
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "parameter.type"
+            }
+        },
+        "p9xgkcqo2pwjc01l": {
+            "id": "p9xgkcqo2pwjc01l",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plot.temporary}"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "bxr9qmq4yftt1nk2": {
+            "id": "bxr9qmq4yftt1nk2",
+            "type": "columns",
+            "content": {},
+            "parentId": "1abau8egbmxt47je",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "3rma4gvrm533p3o2": {
+            "id": "3rma4gvrm533p3o2",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "bxr9qmq4yftt1nk2",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "aliehoz6uvxjb9k3": {
+            "id": "aliehoz6uvxjb9k3",
+            "type": "selectinput",
+            "content": {
+                "label": "",
+                "options": "{\n  \"line\": \"Line\",\n  \"density\": \"Density\",\n  \"bar\": \"Bar\"\n}",
+                "placeholder": "PLOT TYPE",
+                "maximumCount": "1",
+                "selectedColor": "#bcdab1",
+                "separatorColor": "#bcdab1",
+                "containerBackgroundColor": "#f3efe8",
+                "accentColor": "#bcdab1",
+                "chipTextColor": "#143439"
+            },
+            "parentId": "3rma4gvrm533p3o2",
+            "position": 0,
+            "handlers": {
+                "ss-option-change": "plot_temporary",
+                "click": "set_page_locality"
+            },
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "parameter.type"
+            }
+        },
+        "j6queza4g79h8w7v": {
+            "id": "j6queza4g79h8w7v",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "bxr9qmq4yftt1nk2",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "sv8iekt8ja9a49k9": {
+            "id": "sv8iekt8ja9a49k9",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plot.temporary}"
+            },
+            "parentId": "1abau8egbmxt47je",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "g87seozjtmjc16ol": {
+            "id": "g87seozjtmjc16ol",
+            "type": "text",
+            "content": {
+                "text": "__@{selection.name} (id: @{selection.id}) selected.__",
+                "useMarkdown": "yes"
+            },
+            "parentId": "fni0thql5un8a6rk",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "sefujr0mv9hirjxt": {
+            "id": "sefujr0mv9hirjxt",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vs47wl16tjzw6q69",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "s1g0gjadu689n68p": {
+            "id": "s1g0gjadu689n68p",
+            "type": "button",
+            "content": {
+                "text": "DOWNLOAD WEATHER",
+                "buttonColor": "#f3efe8"
+            },
+            "parentId": "sefujr0mv9hirjxt",
+            "position": 0,
+            "handlers": {
+                "ss-click": "download_weather"
+            },
+            "visible": "flag.locality"
+        },
+        "d5xwu0cm6rv1eoig": {
+            "id": "d5xwu0cm6rv1eoig",
+            "type": "selectinput",
+            "content": {
+                "label": "",
+                "options": "{\n  \"1\": \"1 STATION\",\n  \"2\": \"2 STATIONS\",\n  \"3\": \"3 STATIONS\",\n  \"4\": \"4 STATIONS\",\n  \"5\": \"5 STATIONS\",\n  \"6\": \"6 STATIONS\",\n  \"7\": \"7 STATIONS\",\n  \"8\": \"8 STATIONS\",\n  \"9\": \"9 STATIONS\",\n  \"10\": \"10 STATIONS\",\n  \"11\": \"11 STATIONS\",\n  \"12\": \"12 STATIONS\",\n  \"13\": \"13 STATIONS\",\n  \"14\": \"14 STATIONS\",\n  \"15\": \"15 STATIONS\",\n  \"16\": \"16 STATIONS\",\n  \"17\": \"17 STATIONS\",\n  \"18\": \"18 STATIONS\",\n  \"19\": \"19 STATIONS\",\n  \"20\": \"20 STATIONS\"\n}",
+                "placeholder": "NUMBER OF WEATHER STATIONS",
+                "maximumCount": "1",
+                "accentColor": "#f3efe8",
+                "chipTextColor": "#143439",
+                "selectedColor": "#f3efe8",
+                "primaryTextColor": "#143439",
+                "secondaryTextColor": "#143439",
+                "containerBackgroundColor": "#aad3df",
+                "separatorColor": "#aad3df"
+            },
+            "parentId": "sefujr0mv9hirjxt",
+            "position": 1,
+            "handlers": {
+                "ss-option-change": "weather_change"
+            },
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "parameter.count"
+            },
+            "visible": "flag.weather"
+        },
+        "vi2pjj6x7nccu96n": {
+            "id": "vi2pjj6x7nccu96n",
+            "type": "sliderinput",
+            "content": {
+                "label": "THRESHOLD VALUE",
+                "minValue": "-0.01",
+                "maxValue": "15",
+                "stepSize": "0.01"
+            },
+            "parentId": "vfc9fo8f7dfn553v",
+            "position": 1,
+            "handlers": {
+                "ss-number-change": "plot_lice"
+            },
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "parameter.lice_threshold"
+            },
+            "visible": true
+        },
+        "8fl3yl9vex0bd5ue": {
+            "id": "8fl3yl9vex0bd5ue",
+            "type": "message",
+            "content": {
+                "message": "!LICE DATA ABOVE THRESHOLD",
+                "warningColor": "#bcdab1",
+                "primaryTextColor": "#143439"
+            },
+            "parentId": "vfc9fo8f7dfn553v",
+            "position": 0,
+            "handlers": {},
+            "visible": "flag.threshold"
+        },
+        "5425xqhenphtfr43": {
+            "id": "5425xqhenphtfr43",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#aad3df"
+            },
+            "parentId": "vfc9fo8f7dfn553v",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "k06ukjekk16hltsd": {
+            "id": "k06ukjekk16hltsd",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#aad3df"
+            },
+            "parentId": "vfc9fo8f7dfn553v",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "mzjgxvjh13cq4ylq": {
+            "id": "mzjgxvjh13cq4ylq",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#aad3df"
+            },
+            "parentId": "vfc9fo8f7dfn553v",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "ykskdlnzzew27miq": {
+            "id": "ykskdlnzzew27miq",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#aad3df"
+            },
+            "parentId": "vfc9fo8f7dfn553v",
+            "position": 5,
+            "handlers": {},
+            "visible": true
+        },
+        "g6wpubmfrt0e46bt": {
+            "id": "g6wpubmfrt0e46bt",
+            "type": "separator",
+            "content": {
+                "separatorColor": "#aad3df"
+            },
+            "parentId": "vfc9fo8f7dfn553v",
+            "position": 6,
+            "handlers": {},
+            "visible": true
+        },
+        "j3dc7xg39568zc97": {
+            "id": "j3dc7xg39568zc97",
+            "type": "columns",
+            "content": {},
+            "parentId": "e9oa0hotj48f73od",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "5o1oso3m6i0hsacf": {
+            "id": "5o1oso3m6i0hsacf",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "j3dc7xg39568zc97",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "a9102gvm5njkxwem": {
+            "id": "a9102gvm5njkxwem",
+            "type": "selectinput",
+            "content": {
+                "label": "",
+                "options": "{\n  \"line\": \"Line\",\n  \"density\": \"Density\"\n}",
+                "placeholder": "PLOT TYPE",
+                "maximumCount": "1",
+                "selectedColor": "#bcdab1",
+                "separatorColor": "#bcdab1",
+                "containerBackgroundColor": "#f3efe8",
+                "accentColor": "#bcdab1",
+                "chipTextColor": "#143439"
+            },
+            "parentId": "5o1oso3m6i0hsacf",
+            "position": 0,
+            "handlers": {
+                "click": "set_page_weather",
+                "ss-option-change": "plot_temporary"
+            },
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "parameter.type"
+            }
+        },
+        "y8q436gjxbwtavx7": {
+            "id": "y8q436gjxbwtavx7",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "j3dc7xg39568zc97",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "fqxhaojrnqz4mqti": {
+            "id": "fqxhaojrnqz4mqti",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plot.temporary}"
+            },
+            "parentId": "e9oa0hotj48f73od",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "535j4jv73pu3d8i2": {
+            "id": "535j4jv73pu3d8i2",
+            "type": "multiselectinput",
+            "content": {
+                "label": "",
+                "options": "@{parameter.weather_select_columns}",
+                "placeholder": "FEATURES TO PLOT",
+                "maximumCount": "0",
+                "accentColor": "#bcdab1",
+                "chipTextColor": "#143439",
+                "selectedColor": "#bcdab1",
+                "primaryTextColor": "#143439",
+                "containerBackgroundColor": "#f3efe8",
+                "separatorColor": "#bcdab1"
+            },
+            "parentId": "y8q436gjxbwtavx7",
+            "position": 0,
+            "handlers": {
+                "ss-options-change": "plot_temporary",
+                "click": "set_page_weather"
+            },
+            "binding": {
+                "eventType": "ss-options-change",
+                "stateRef": "parameter.column"
+            },
+            "visible": true
+        },
+        "tvo3ucjqlz7ldjjq": {
+            "id": "tvo3ucjqlz7ldjjq",
+            "type": "multiselectinput",
+            "content": {
+                "label": "",
+                "options": "@{parameter.locality_select_columns}",
+                "placeholder": "FEATURES TO PLOT",
+                "maximumCount": "0",
+                "accentColor": "#bcdab1",
+                "chipTextColor": "#143439",
+                "selectedColor": "#bcdab1",
+                "primaryTextColor": "#143439",
+                "containerBackgroundColor": "#f3efe8",
+                "separatorColor": "#bcdab1"
+            },
+            "parentId": "j6queza4g79h8w7v",
+            "position": 0,
+            "handlers": {
+                "ss-options-change": "plot_temporary",
+                "click": "set_page_locality"
+            },
+            "binding": {
+                "eventType": "ss-options-change",
+                "stateRef": "parameter.column"
+            }
+        },
+        "2t5zg1103f86w5fn": {
+            "id": "2t5zg1103f86w5fn",
+            "type": "multiselectinput",
+            "content": {
+                "label": "",
+                "options": "@{parameter.fish_select_columns}",
+                "placeholder": "FEATURES TO PLOT",
+                "maximumCount": "0",
+                "accentColor": "#bcdab1",
+                "chipTextColor": "#143439",
+                "selectedColor": "#bcdab1",
+                "primaryTextColor": "#143439",
+                "containerBackgroundColor": "#f3efe8",
+                "separatorColor": "#bcdab1"
+            },
+            "parentId": "7dtgy5q8g7qt7lbl",
+            "position": 0,
+            "handlers": {
+                "ss-options-change": "plot_temporary",
+                "click": "set_page_fish"
+            },
+            "binding": {
+                "eventType": "ss-options-change",
+                "stateRef": "parameter.column"
+            }
+        },
+        "2e6qbcarr7rt3fwv": {
+            "id": "2e6qbcarr7rt3fwv",
+            "type": "page",
+            "content": {
+                "key": "ARIMAX",
+                "containerBackgroundColor": "#aad3df",
+                "emptinessColor": "#aad3df",
+                "separatorColor": "#aad3df"
+            },
+            "parentId": "root",
+            "position": 5,
+            "handlers": {},
+            "visible": true
+        },
+        "tyxsb66nosizg6i7": {
+            "id": "tyxsb66nosizg6i7",
+            "type": "header",
+            "content": {
+                "text": "ARIMAX",
+                "emptinessColor": "#143439",
+                "accentColor": "#bcdab1"
+            },
+            "parentId": "2e6qbcarr7rt3fwv",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "wtkmvdqtsnv6dt7m": {
+            "id": "wtkmvdqtsnv6dt7m",
+            "type": "sidebar",
+            "content": {
+                "sidebarBackgroundColor": "#bcdab1"
+            },
+            "parentId": "2e6qbcarr7rt3fwv",
+            "position": -2,
+            "handlers": {},
+            "visible": true
+        },
+        "v87lzi1hen67y1hf": {
+            "id": "v87lzi1hen67y1hf",
+            "type": "columns",
+            "content": {},
+            "parentId": "wtkmvdqtsnv6dt7m",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "ttlmmzjljc5fjevu": {
+            "id": "ttlmmzjljc5fjevu",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "v87lzi1hen67y1hf",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "abwg5aqii67agrvu": {
+            "id": "abwg5aqii67agrvu",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE ALL LOCATIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "ttlmmzjljc5fjevu",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE ALL"
+            },
+            "visible": true
+        },
+        "emsk2bsr31tsk5c6": {
+            "id": "emsk2bsr31tsk5c6",
+            "type": "columns",
+            "content": {},
+            "parentId": "wtkmvdqtsnv6dt7m",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "p7robre783xcg76n": {
+            "id": "p7robre783xcg76n",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "emsk2bsr31tsk5c6",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "f9q192pqjems57yc": {
+            "id": "f9q192pqjems57yc",
+            "type": "section",
+            "content": {
+                "title": "FISH LICE @{parameter.locality.name}",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "p7robre783xcg76n",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_FISH LICE SPECIFIC"
+            },
+            "visible": true
+        },
+        "g9jm60hmvzmnd1ol": {
+            "id": "g9jm60hmvzmnd1ol",
+            "type": "columns",
+            "content": {},
+            "parentId": "wtkmvdqtsnv6dt7m",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "enmsfim9l8e5rqrm": {
+            "id": "enmsfim9l8e5rqrm",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "g9jm60hmvzmnd1ol",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "4jhzzginblwper6l": {
+            "id": "4jhzzginblwper6l",
+            "type": "section",
+            "content": {
+                "title": "WEATHER",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "enmsfim9l8e5rqrm",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_WEATHER"
+            },
+            "visible": true
+        },
+        "878upg32cy392u81": {
+            "id": "878upg32cy392u81",
+            "type": "columns",
+            "content": {},
+            "parentId": "wtkmvdqtsnv6dt7m",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "k4qf4rdwi44chu5g": {
+            "id": "k4qf4rdwi44chu5g",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "878upg32cy392u81",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "cgf9qot551modqh5": {
+            "id": "cgf9qot551modqh5",
+            "type": "section",
+            "content": {
+                "title": "DOWNLOAD DATA",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "wtkmvdqtsnv6dt7m",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_NORWAY MAP"
+            },
+            "visible": true
+        },
+        "1gwfiz0anwkzvsad": {
+            "id": "1gwfiz0anwkzvsad",
+            "type": "columns",
+            "content": {},
+            "parentId": "wtkmvdqtsnv6dt7m",
+            "position": 5,
+            "handlers": {},
+            "visible": true
+        },
+        "0fgi7pqsj42htxzw": {
+            "id": "0fgi7pqsj42htxzw",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "1gwfiz0anwkzvsad",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "mwsigf6lzlf6qiaj": {
+            "id": "mwsigf6lzlf6qiaj",
+            "type": "section",
+            "content": {
+                "title": "INSTRUCTIONS",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "0fgi7pqsj42htxzw",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_INSTRUCTIONS"
+            }
+        },
+        "kyj6fy8nw1ws3nz4": {
+            "id": "kyj6fy8nw1ws3nz4",
+            "type": "section",
+            "content": {
+                "title": "ARIMAX",
+                "snapMode": "no",
+                "containerBackgroundColor": "#bcdab1",
+                "separatorColor": "#143439"
+            },
+            "parentId": "k4qf4rdwi44chu5g",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_ARIMAX"
+            }
+        },
+        "508vdjt6k6on6fkc": {
+            "id": "508vdjt6k6on6fkc",
+            "type": "section",
+            "content": {
+                "title": "ARIMAX",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "nrwlpgzvpaczgrl6",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_ARIMAX"
+            },
+            "visible": true
+        },
+        "vq0qr6lnl4zlzkrf": {
+            "id": "vq0qr6lnl4zlzkrf",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "r2go6a2o85e0ipst",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "pslguxpcsexfqp71": {
+            "id": "pslguxpcsexfqp71",
+            "type": "section",
+            "content": {
+                "title": "ARIMAX",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "vq0qr6lnl4zlzkrf",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_ARIMAX"
+            },
+            "visible": true
+        },
+        "mxtaggmiofnjbck8": {
+            "id": "mxtaggmiofnjbck8",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "x2s32whmx8cpyolb",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "rxolphekjpxgjv6k": {
+            "id": "rxolphekjpxgjv6k",
+            "type": "section",
+            "content": {
+                "title": "ARIMAX",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "mxtaggmiofnjbck8",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_ARIMAX"
+            },
+            "visible": true
+        },
+        "okpqviqk1k13w0t2": {
+            "id": "okpqviqk1k13w0t2",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "q61igv3t4t8whk62",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "ivdsosu5p3m25l3m": {
+            "id": "ivdsosu5p3m25l3m",
+            "type": "section",
+            "content": {
+                "title": "ARIMAX",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "okpqviqk1k13w0t2",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_ARIMAX"
+            },
+            "visible": true
+        },
+        "73n7nqou9detxzrc": {
+            "id": "73n7nqou9detxzrc",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "nsymr17gn0m9lk8f",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "qruxrkryjcapao60": {
+            "id": "qruxrkryjcapao60",
+            "type": "section",
+            "content": {
+                "title": "ARIMAX",
+                "snapMode": "no",
+                "containerBackgroundColor": "#f3efe8"
+            },
+            "parentId": "73n7nqou9detxzrc",
+            "position": 0,
+            "handlers": {
+                "click": "$goToPage_ARIMAX"
+            },
+            "visible": true
+        },
+        "gs08ixtd7xgv9bqf": {
+            "id": "gs08ixtd7xgv9bqf",
+            "type": "multiselectinput",
+            "content": {
+                "label": "",
+                "options": "@{parameter.weather_select_columns}",
+                "placeholder": "EXOGENOUS VARIABLES",
+                "maximumCount": "0",
+                "accentColor": "#bcdab1",
+                "chipTextColor": "#143439",
+                "selectedColor": "#bcdab1",
+                "primaryTextColor": "#143439",
+                "containerBackgroundColor": "#f3efe8",
+                "separatorColor": "#bcdab1",
+                "cssClasses": ""
+            },
+            "parentId": "i90qvtmkbjnyocba",
+            "position": 0,
+            "handlers": {
+                "ss-options-change": "arimax"
+            },
+            "binding": {
+                "eventType": "ss-options-change",
+                "stateRef": "parameter.arimax.exogenous"
+            },
+            "visible": true
+        },
+        "135xxkbkgpww1kld": {
+            "id": "135xxkbkgpww1kld",
+            "type": "columns",
+            "content": {},
+            "parentId": "2e6qbcarr7rt3fwv",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "l7mjhde7w326giam": {
+            "id": "l7mjhde7w326giam",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "135xxkbkgpww1kld",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "i90qvtmkbjnyocba": {
+            "id": "i90qvtmkbjnyocba",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "135xxkbkgpww1kld",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "hsl1f1prhs82l25o": {
+            "id": "hsl1f1prhs82l25o",
+            "type": "selectinput",
+            "content": {
+                "label": "",
+                "options": "{\n  \"avgadultfemalelice\": \"Average adult female lice\",\n  \"avgmobilelice\": \"Average mobile lice\",\n  \"avgstationarylice\": \"Average stationary lice\"\n}",
+                "placeholder": "FEATURE",
+                "maximumCount": "1",
+                "accentColor": "#bcdab1",
+                "chipTextColor": "#143439",
+                "selectedColor": "#bcdab1",
+                "primaryTextColor": "#143439",
+                "containerBackgroundColor": "#f3efe8",
+                "separatorColor": "#bcdab1"
+            },
+            "parentId": "l7mjhde7w326giam",
+            "position": 0,
+            "handlers": {
+                "ss-option-change": "arimax"
+            },
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "parameter.arimax.endogenous"
+            },
+            "visible": true
+        },
+        "xszx6z8xtqbb7gpu": {
+            "id": "xszx6z8xtqbb7gpu",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{plot.arimax}"
+            },
+            "parentId": "2e6qbcarr7rt3fwv",
+            "position": 5,
+            "handlers": {},
+            "visible": "flag.arimax"
+        },
+        "n17jpjfj06vqb3r9": {
+            "id": "n17jpjfj06vqb3r9",
+            "type": "dataframe",
+            "content": {
+                "dataframe": "@{arimax_results}",
+                "showIndex": "yes",
+                "displayRowCount": "100",
+                "wrapText": "no",
+                "primaryTextColor": "#143439",
+                "separatorColor": "#143439",
+                "dataframeBackgroundColor": "#aad3df",
+                "dataframeHeaderRowBackgroundColor": "#aad3df",
+                "fontStyle": "",
+                "secondaryTextColor": "#143439"
+            },
+            "parentId": "2e6qbcarr7rt3fwv",
+            "position": 6,
+            "handlers": {},
+            "visible": "flag.arimax"
+        },
+        "vadxbzz68fgpjrxn": {
+            "id": "vadxbzz68fgpjrxn",
+            "type": "columns",
+            "content": {},
+            "parentId": "2e6qbcarr7rt3fwv",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "c01946b1ry9bi0e9": {
+            "id": "c01946b1ry9bi0e9",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vadxbzz68fgpjrxn",
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "n9ispr6tm0g6npgm": {
+            "id": "n9ispr6tm0g6npgm",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vadxbzz68fgpjrxn",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "ihtkt56qijoyukyn": {
+            "id": "ihtkt56qijoyukyn",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vadxbzz68fgpjrxn",
+            "position": 2,
+            "handlers": {},
+            "visible": true
+        },
+        "0mikc160e3hadifz": {
+            "id": "0mikc160e3hadifz",
+            "type": "sliderinput",
+            "content": {
+                "label": "Autoregressive steps (p)",
+                "minValue": "0",
+                "maxValue": "15",
+                "stepSize": "1"
+            },
+            "parentId": "c01946b1ry9bi0e9",
+            "position": 0,
+            "handlers": {
+                "ss-number-change": "arimax"
+            },
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "parameter.arimax.hyperparameters.p"
+            },
+            "visible": true
+        },
+        "nkuzsn3agz4q4kwc": {
+            "id": "nkuzsn3agz4q4kwc",
+            "type": "sliderinput",
+            "content": {
+                "label": "Differencing (d)",
+                "minValue": "0",
+                "maxValue": "6",
+                "stepSize": "1"
+            },
+            "parentId": "n9ispr6tm0g6npgm",
+            "position": 0,
+            "handlers": {
+                "ss-number-change": "arimax"
+            },
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "parameter.arimax.hyperparameters.d"
+            },
+            "visible": true
+        },
+        "3tesffk6emh7txgo": {
+            "id": "3tesffk6emh7txgo",
+            "type": "sliderinput",
+            "content": {
+                "label": "Moving average steps (q)",
+                "minValue": "0",
+                "maxValue": "15",
+                "stepSize": "1"
+            },
+            "parentId": "ihtkt56qijoyukyn",
+            "position": 0,
+            "handlers": {
+                "ss-number-change": "arimax"
+            },
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "parameter.arimax.hyperparameters.q"
+            },
+            "visible": true
+        },
+        "ydeyt5opgky7dn7b": {
+            "id": "ydeyt5opgky7dn7b",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vadxbzz68fgpjrxn",
+            "position": 3,
+            "handlers": {},
+            "visible": true
+        },
+        "0f4fb9ruytf1zc2q": {
+            "id": "0f4fb9ruytf1zc2q",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "parentId": "vadxbzz68fgpjrxn",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "6rl6boo0yzddg24h": {
+            "id": "6rl6boo0yzddg24h",
+            "type": "sliderinput",
+            "content": {
+                "label": "Number of lags",
+                "minValue": "0",
+                "maxValue": "15",
+                "stepSize": "1"
+            },
+            "parentId": "ydeyt5opgky7dn7b",
+            "position": 0,
+            "handlers": {
+                "ss-number-change": "arimax"
+            },
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "parameter.arimax.lags"
+            },
+            "visible": true
+        },
+        "ea7wac664p0qj3mx": {
+            "id": "ea7wac664p0qj3mx",
+            "type": "sliderinput",
+            "content": {
+                "label": "Prediction horizon",
+                "minValue": "2",
+                "maxValue": "25",
+                "stepSize": "1"
+            },
+            "parentId": "0f4fb9ruytf1zc2q",
+            "position": 0,
+            "handlers": {
+                "ss-number-change": "arimax"
+            },
+            "binding": {
+                "eventType": "ss-number-change",
+                "stateRef": "parameter.arimax.horizon"
+            },
+            "visible": true
+        },
+        "2zt1wuypna4swgfi": {
+            "id": "2zt1wuypna4swgfi",
+            "type": "text",
+            "content": {
+                "text": "Project utilizing the 'StreamSync' framework for interactive use of BarentsWatch and Frost APIs. The\n project is a part of the course 'IND320' at NMBU. The web app allows the user to download and\n explore data, in addition to some simple interactive forecasting.\n\n__IMPORTANT__\n\n* To run locally, modify the API credentials at the top of the 'functions.fetching'-file.\n* Must have Cassandra running locally.",
+                "useMarkdown": "yes"
+            },
+            "parentId": "b8usconersfajh5g",
+            "position": 1,
+            "handlers": {},
+            "visible": true
+        },
+        "yvm29ow0w0kihng7": {
+            "id": "yvm29ow0w0kihng7",
+            "type": "message",
+            "content": {
+                "message": "!NO LOCALITY DATA EXISTS, DOWNLOAD THROUGH THE 'DOWNLOAD DATA' PAGE.",
+                "errorColor": "#bcdab1",
+                "warningColor": "#bcdab1",
+                "primaryTextColor": "#143439"
+            },
+            "parentId": "1abau8egbmxt47je",
+            "position": 1,
+            "handlers": {},
+            "visible": "flag.no_data_locality"
+        },
+        "wg6pt57eku9u9r73": {
+            "id": "wg6pt57eku9u9r73",
+            "type": "message",
+            "content": {
+                "message": "!NO WEATHER DATA EXISTS, DOWNLOAD THROUGH THE 'DOWNLOAD DATA' PAGE.",
+                "errorColor": "#bcdab1",
+                "warningColor": "#bcdab1",
+                "primaryTextColor": "#143439"
+            },
+            "parentId": "e9oa0hotj48f73od",
+            "position": 1,
+            "handlers": {},
+            "visible": "flag.no_data_weather"
+        },
+        "a1lr9lilp040tpsm": {
+            "id": "a1lr9lilp040tpsm",
+            "type": "message",
+            "content": {
+                "message": "!NO LOCALITY DATA EXISTS, DOWNLOAD THROUGH THE 'DOWNLOAD DATA' PAGE.",
+                "errorColor": "#bcdab1",
+                "warningColor": "#bcdab1",
+                "primaryTextColor": "#143439"
+            },
+            "parentId": "2e6qbcarr7rt3fwv",
+            "position": 1,
+            "handlers": {},
+            "visible": "flag.no_data_locality"
+        },
+        "w3vk4wq21qmnrh5x": {
+            "id": "w3vk4wq21qmnrh5x",
+            "type": "message",
+            "content": {
+                "message": "!NO WEATHER DATA EXISTS, DOWNLOAD THROUGH THE 'DOWNLOAD DATA' PAGE.",
+                "errorColor": "#bcdab1",
+                "warningColor": "#bcdab1",
+                "primaryTextColor": "#143439"
+            },
+            "parentId": "2e6qbcarr7rt3fwv",
+            "position": 2,
+            "handlers": {},
+            "visible": "flag.no_data_weather"
+        }
+    }
+}
