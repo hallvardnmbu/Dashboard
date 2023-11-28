@@ -3,8 +3,8 @@
 import warnings
 import streamsync as ss
 
-from functions.fetching import update_data
-from functions.plots import initialise_plots
+from functions.fetching import *
+from functions.plots import *
 
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
