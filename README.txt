@@ -7,3 +7,8 @@ IMPORTANT
 ---------
 * To run locally, modify the API credentials at the top of the 'functions.fetching'-file.
 * Must have Cassandra running locally.
+
+USAGE
+-----
+* (Cassandra must be running.)
+* streamsync run Dashboard/
