@@ -19,6 +19,15 @@ logger = getLogger(__name__)
 
 
 def empty_plot(state):
+    """
+    Updates the layout of a global empty plot with state-defined colors.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary containing the state of the application, specifically 'colours' for background settings.
+    """
+    logger.debug('Updating empty plot layout')
     global _EMPTY_PLOT
 
     _EMPTY_PLOT.update_layout(
@@ -27,18 +36,31 @@ def empty_plot(state):
         xaxis=dict(showgrid=False, showticklabels=False, zeroline=False),
         yaxis=dict(showgrid=False, showticklabels=False, zeroline=False)
     )
+    logger.debug('Empty plot layout updated')
 
 
 # %% FISH PLOTS
 
 
 def plot_pd(state):
+    """
+    Creates a plot for pancreas disease (PD) proportion in fish health data.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application, containing data and parameters for the plot.
+    """
+    logger.info('Creating PD plot')
+
     try:
         fish_health = state['data']['fish'].copy()
     except AttributeError:
+        logger.warning('No fish data found, downloading...')
         state['parameter']['download'] = 'fish'
         download(state)
         update_data(state)
+        logger.info('Trying to create PD plot again')
         plot_pd(state)
 
     fish_health['timestamp'] = pd.to_datetime(fish_health['timestamp'])
@@ -74,16 +96,28 @@ def plot_pd(state):
 
     state['plot']['pd'] = fig
 
+    logger.info('PD plot created')
+
 
 # %% LOCALITY PLOTS
 
 
 def plot_lice(state):
+    """
+    Creates a plot for lice data based on the current state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application, containing data, parameters, and flags for the plot.
+    """
+    logger.info('Creating lice plot')
     state['flag']['threshold'] = False
 
     try:
         fish_lice = state['data']['locality'].copy()
     except AttributeError:
+        logger.warning('No locality data found. Setting flag and placeholder plot.')
         state['flag']['no_data_locality'] = True
         state['plot']['lice'] = _EMPTY_PLOT
         return
@@ -132,6 +166,7 @@ def plot_lice(state):
 
         for idx, value in enumerate(fish_lice[column]):
             if value >= threshold:
+                logger.debug(f'Found value above threshold: {value}')
                 fig.add_trace(
                     go.Scatter(
                         x=[fish_lice.index[idx]],
@@ -144,6 +179,7 @@ def plot_lice(state):
                 )
 
         if fish_lice[column].gt(threshold).any() and not state['flag']['threshold']:
+            logger.debug('Found values above threshold – setting flag.')
             state['flag']['threshold'] = True
 
     _trace('avgadultfemalelice', state['colours']['black'])
@@ -165,6 +201,16 @@ def plot_lice(state):
 
 
 def _norway(state):
+    """
+    Prepares and plots data on a map of Norway, highlighting weather stations and fish breeding facilities.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application, containing data and parameters for the map plot.
+    """
+    logger.info('Creating Norway map plot')
+
     stations = pd.DataFrame(state['station_coordinates'].state.items(),
                             columns=['Name', 'Coordinates'])
     stations[['Lon', 'Lat']] = pd.DataFrame(stations['Coordinates'].tolist(),
@@ -175,6 +221,7 @@ def _norway(state):
     try:
         fish = state['data']['fish'].copy()
     except AttributeError:
+        logger.warning('No fish data found when plotting Norway, downloading...')
         state['parameter']['download'] = 'fish'
         download(state)
         update_data(state)
@@ -226,14 +273,30 @@ def _norway(state):
     state['data']['norway'] = data
     state['plot']['norway'] = fig
 
+    logger.info('Norway map plot created')
+
 
 def plot_norway(state):
+    """
+    Updates and modifies the Norway map plot based on the current state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application, containing data and parameters for updating the map plot.
+    """
+    logger.info('Updating selection in Norway map plot')
+
     state['parameter']['download'] = 'locality'
     download_change(state)
 
     fig = state['plot']['norway']
 
     if not fig:
+        logger.warning('No Norway map plot found, creating.')
+        _norway(state)
+        logger.info('Trying to update Norway map plot again')
+        plot_norway(state)
         return
 
     fig.data = [
@@ -247,6 +310,7 @@ def plot_norway(state):
         name = state['selection']['name']
         locality_id = state['selection']['id']
     except TypeError:
+        logger.warning('No selection found, using default values.')
         name = state['parameter']['locality']['name']
         locality_id = state['parameter']['locality']['id']
 
@@ -277,14 +341,27 @@ def plot_norway(state):
 
     state['plot']['norway'] = fig
 
+    logger.info('Norway map plot updated')
+
 
 # %% TEMPORARY PLOTS
 
 
 def plot_temporary(state):
+    """
+    Creates a temporary plot based on the current page and selected parameters.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application, containing data and parameters for the temporary plot.
+    """
+    logger.info('Creating temporary plot')
+
     columns = state['parameter']['column']
 
     if not columns or columns == [] or not state['parameter']['type']:
+        logger.warning('No columns or type found, using placeholder plot.')
         state['plot']['temporary'] = _EMPTY_PLOT
         return
 
@@ -294,7 +371,9 @@ def plot_temporary(state):
     try:
         data = state['data'][state['parameter']['current_page']].copy()
     except AttributeError:
+        logger.warning('No data found, using placeholder plot and setting flag.')
         state['flag'][f'no_{state["parameter"]["current_page"]}'] = True
+        state['plot']['temporary'] = _EMPTY_PLOT
         return
 
     data.replace({'null': 0}, inplace=True)
@@ -303,6 +382,7 @@ def plot_temporary(state):
     data.sort_index(inplace=True)
 
     if state['parameter']['current_page'] == 'fish':
+        logger.debug('Preparing fish data')
         data = data.groupby('timestamp').agg({col: 'mean' if data.dtypes[col]
                                               != 'bool' else 'sum'
                                               for col in columns}).reset_index()
@@ -314,7 +394,6 @@ def plot_temporary(state):
 
     for column in columns:
         if state['parameter']['type'] == 'line':
-
             fig.add_trace(go.Scatter(
                 x=data.index,
                 y=data[column],
@@ -335,6 +414,7 @@ def plot_temporary(state):
             try:
                 density = gaussian_kde(data[column].dropna())
             except np.linalg.LinAlgError:
+                logger.warning('Not enough variance, skipping column.')
                 continue
 
             bars = np.linspace(data[column].min(), data[column].max(), 200)
@@ -402,6 +482,16 @@ def plot_temporary(state):
 
 
 def arimax(state):
+    """
+    Creates an ARIMAX model based on the current state and plots the predictions.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application, containing data and parameters for ARIMAX modeling and plotting.
+    """
+    logger.info('Creating ARIMAX model')
+
     state['flag']['arimax'] = False
     state['plot']['arimax'] = _EMPTY_PLOT
 
@@ -414,6 +504,7 @@ def arimax(state):
     try:
         endogenous = state['data']['locality'].copy()
     except AttributeError:
+        logger.warning('No locality data found. Setting flag and placeholder plot.')
         state['flag']['no_data_locality'] = True
         state['plot']['arimax'] = _EMPTY_PLOT
         return
@@ -451,6 +542,7 @@ def arimax(state):
                     except KeyError:
                         continue
             if exogenous.empty:
+                logger.warning('No exogenous data found. Not using exogenous data.')
                 exogenous = None
             else:
                 exogenous.bfill(inplace=True)
@@ -463,8 +555,10 @@ def arimax(state):
                                  'incompatible (no common indices)!')
                     return
         else:
+            logger.warning('No exogenous data found. Not using exogenous data.')
             exogenous = None
     except AttributeError:
+        logger.warning('No weather data found. Setting flag and not using exogenous data.')
         state['flag']['no_data_weather'] = True
         exogenous = None
 
@@ -529,11 +623,22 @@ def arimax(state):
     state['plot']['arimax'] = fig
     state['flag']['arimax'] = True
 
+    logger.info('ARIMAX model created')
+
 
 # %% UPDATERS
 
 
 def initialise_plots(state):
+    """
+    Initializes all plots based on the current state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application.
+    """
+    logger.info('Initialising plots')
 
     _norway(state)
     plot_norway(state)
@@ -546,12 +651,32 @@ def initialise_plots(state):
 
     arimax(state)
 
+    logger.info('Plots initialised')
+
 
 def set_page_fish(state):
+    """
+    Sets the current page to 'fish' in the state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application.
+    """
+    logger.info('Setting page to fish')
     state['parameter']['current_page'] = 'fish'
 
 
 def update_plot_fish(state):
+    """
+    Updates the fish plot based on the current state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application.
+    """
+    logger.info('Updating fish plot')
     state['parameter']['current_page'] = 'fish'
     state['parameter']['type'] = None
     state['parameter']['column'] = []
@@ -561,10 +686,28 @@ def update_plot_fish(state):
 
 
 def set_page_locality(state):
+    """
+    Sets the current page to 'locality' in the state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application.
+    """
+    logger.info('Setting page to locality')
     state['parameter']['current_page'] = 'locality'
 
 
 def update_plot_locality(state):
+    """
+    Updates the locality plot based on the current state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application.
+    """
+    logger.info('Updating locality plot')
     state['parameter']['current_page'] = 'locality'
     state['parameter']['type'] = None
     state['parameter']['column'] = []
@@ -574,10 +717,28 @@ def update_plot_locality(state):
 
 
 def set_page_weather(state):
+    """
+    Sets the current page to 'weather' in the state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application.
+    """
+    logger.info('Setting page to weather')
     state['parameter']['current_page'] = 'weather'
 
 
 def update_plot_weather(state):
+    """
+    Updates the weather plot based on the current state.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application.
+    """
+    logger.info('Updating weather plot')
     state['parameter']['current_page'] = 'weather'
     state['parameter']['type'] = None
     state['parameter']['column'] = []
@@ -588,6 +749,19 @@ def update_plot_weather(state):
 
 
 def map_click(state, payload):
+    """
+    Handles click events on the map and updates the state accordingly.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application.
+    payload : list
+        A list containing payload data from the map click event.
+    """
+    logger.info('Handling map click event')
+    logger.debug(f'Payload: {payload}')
+
     selection = state['data']['norway'].loc[payload[0]['pointNumber']]
 
     if len(selection) != 5:
@@ -598,3 +772,5 @@ def map_click(state, payload):
     state['selection'] = {'id': int(selection['Locality']), 'name': selection['Name']}
 
     plot_norway(state)
+
+    logger.info('Map click event handled')
