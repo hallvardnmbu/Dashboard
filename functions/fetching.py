@@ -29,6 +29,7 @@ logger = getLogger(__name__)
 
 # %% SPARK AND CASSANDRA INITIALISATION
 
+logger.info("Initialising Spark and Cassandra.")
 
 _SPARK = SparkSession.builder.appName('SparkCassandraApp'). \
     config('spark.jars.packages',
@@ -41,12 +42,18 @@ _SPARK = SparkSession.builder.appName('SparkCassandraApp'). \
     config('spark.cassandra.connection.port', '9042').getOrCreate()
 
 cluster = Cluster(['localhost'], port=9042)
-_SESSION = cluster.connect()
+try:
+    _SESSION = cluster.connect()
+except:  # noqa
+    logger.error("Could not connect to Cassandra database.")
+    raise ConnectionError("Could not connect to Cassandra database.")
 _SESSION.execute(
     "CREATE KEYSPACE IF NOT EXISTS streamsync "
     "WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };"
 )
 _SESSION.set_keyspace('streamsync')
+
+logger.info("Spark and Cassandra initialised successfully.")
 
 
 # %% _BARENTSWATCH
@@ -96,6 +103,8 @@ class BarentsWatch:
         self.lon = None
         self.lat = None
         self.data = None
+
+        logger.info("BarentsWatch class initialized successfully.")
 
     def download(self, from_year, to_year=None, locality=None,
                  table=_FISH_TABLE, primary_key='timestamp'):
@@ -176,6 +185,7 @@ class BarentsWatch:
                         if column in _raw:
                             _raw[column] = json.dumps(_raw[column])
                     except:  # noqa
+                        logger.debug(f"Could not convert {column} to JSON.")
                         pass
 
                 data.append(_raw)
@@ -245,6 +255,8 @@ class BarentsWatch:
             .options(table=table, keyspace="streamsync") \
             .load().toPandas()
 
+        logger.info("Fish loaded successfully.")
+
         return data
 
 
@@ -268,6 +280,8 @@ class Frost:
         count : int, optional
             Number of stations to fetch data from.
         """
+        logger.info("Initializing Frost class.")
+
         self.client_id = client_id
 
         nearest = requests.get(
@@ -289,8 +303,12 @@ class Frost:
         self.start = None
         self.end = None
 
+        logger.info("Frost class initialized successfully.")
+
     def _elements(self):
         """Get all available elements from the Frost API."""
+        logger.info("Getting all available elements from the Frost API.")
+
         url = 'https://frost.met.no/observations/availableTimeSeries/v0.jsonld'
         parameters = {
             'sources': self.stations,
@@ -314,6 +332,9 @@ class Frost:
                     "P30D" not in element and
                     "over_time" not in element and
                     "PT6H" not in element]
+        logger.debug(f"Elements: {elements}")
+
+        logger.info("Elements fetched successfully.")
 
         return ','.join(elements)
 
@@ -333,6 +354,8 @@ class Frost:
         """
         from_year = int(from_year)
         to_year = int(to_year) if to_year else None
+
+        logger.info(f"Starting data fetch for years {from_year} to {to_year}.")
 
         self.start = f"{from_year}-01-01"
         self.end = f"{to_year}-12-31" if to_year else f"{from_year}-12-31"
@@ -366,12 +389,16 @@ class Frost:
                 data.append(pd.json_normalize(response['data'], record_path='observations',
                                               meta=['sourceId', 'referenceTime']))
             except requests.exceptions.JSONDecodeError:
+                logger.info("Too many elements, splitting into chunks.")
+
                 def _chunks(lst, n):
                     for _i in range(0, len(lst), n):
                         yield lst[_i:_i + n]
 
                 _data = []
                 for chunk in _chunks(self.elements.split(','), 5):
+                    logger.debug(f"Chunk: {chunk}")
+
                     parameters['elements'] = ','.join(chunk)
 
                     _response = requests.get(_FROST_URL, parameters,
@@ -382,10 +409,11 @@ class Frost:
                         _data.append(pd.json_normalize(response['data'], record_path='observations',
                                                        meta=['sourceId', 'referenceTime']))
                     except:  # noqa
+                        logger.info("No data found for specified time range.")
                         pass
                 data.append(pd.concat(_data))
             except (KeyError, ValueError):
-                logger.debug("No data found for specified time range.")
+                logger.info("No data found for specified time range.")
         try:
             self.data = pd.concat(data)
 
@@ -418,6 +446,8 @@ class Frost:
         - level.levelType
         - level.value
         """
+        logger.info("Cleaning data.")
+
         if remove is None:
             remove = ["timeSeriesId", "performanceCategory", "exposureCategory",
                       "qualityCode", "level.unit", "level.levelType", "level.value",
@@ -462,6 +492,7 @@ class Frost:
         self.data.rename(columns=dict(zip(self.data.columns, columns)), inplace=True)
 
         if threshold:
+            logger.info("Removing columns with too many NaN values.")
             nans = self.data.isna().mean()
             self.data = self.data.loc[:, nans <= threshold]
 
@@ -492,11 +523,13 @@ class Frost:
         columns = [f"{col} {types.get(str(dtype), 'TEXT')}"
                    for col, dtype in self.data.dtypes.iteritems()]
 
+        logger.info(f"Creating table {table}.")
         _SESSION.execute(f"DROP TABLE IF EXISTS {table};")
         _SESSION.execute(
             f"CREATE TABLE IF NOT EXISTS {table} ({', '.join(columns)}, "
             f"PRIMARY KEY(timestamp));"
         )
+        logger.info(f"Table {table} created successfully.")
 
         spark_dataframe = _SPARK.createDataFrame(self.data)
         spark_dataframe.write \
@@ -504,6 +537,7 @@ class Frost:
             .mode("append") \
             .options(table=table, keyspace="streamsync") \
             .save()
+
         logger.info("Data save completed successfully.")
 
     @staticmethod
@@ -515,6 +549,8 @@ class Frost:
             .options(table=table, keyspace="streamsync") \
             .load().toPandas()
 
+        logger.info("Weather loaded successfully.")
+
         return df_weather
 
 
@@ -522,6 +558,17 @@ class Frost:
 
 
 def _download_fish(state):
+    """
+    Downloads fish data and updates the state dictionary with the selected columns.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary containing the state of the application. Must contain 'parameter'
+        with 'from_year', 'to_year', and 'fish_select_columns'.
+    """
+    logger.info("Downloading fish data.")
+
     _BARENTSWATCH.download(from_year=state['parameter']['from_year'],
                            to_year=state['parameter']['to_year'],
                            table=_FISH_TABLE,
@@ -535,10 +582,24 @@ def _download_fish(state):
 
     for column in data.columns:
         if data.dtypes[column] == 'object':
+            logger.debug(f"Removing column {column} from fish data.")
             state['parameter']['fish_select_columns'].state.pop(column)
+
+    logger.info("Fish data downloaded successfully.")
 
 
 def _download_locality(state):
+    """
+    Downloads locality data and updates the state dictionary with the selected columns.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary containing the state of the application. Must contain 'parameter'
+        with 'from_year', 'to_year', 'locality', and 'locality_select_columns'.
+    """
+    logger.info("Downloading locality data.")
+
     _BARENTSWATCH.download(from_year=state['parameter']['from_year'],
                            to_year=state['parameter']['to_year'],
                            locality=state['parameter']['locality']['id'],
@@ -552,10 +613,24 @@ def _download_locality(state):
 
     for column in data.columns:
         if data.dtypes[column] == 'object':
+            logger.debug(f"Removing column {column} from locality data.")
             state['parameter']['locality_select_columns'].state.pop(column)
+
+    logger.info("Locality data downloaded successfully.")
 
 
 def download_weather(state):
+    """
+    Downloads weather data and updates the state dictionary with weather selection columns.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary containing the state of the application. Must contain 'parameter'
+        with 'from_year' and 'to_year'.
+    """
+    logger.info("Downloading weather data.")
+
     state['flag']['downloading'] = True
     weather_change(state)
     _FROST.download(state['parameter']['from_year'],
@@ -569,19 +644,48 @@ def download_weather(state):
     state['parameter']['weather_select_columns'].state.pop('timestamp')
     state['flag']['downloading'] = False
 
+    logger.info("Weather data downloaded successfully.")
+
 
 # %% EXTRACTING DATA
 
 
 def _extract_fish():
+    """
+    Extracts fish data from a predefined data source.
+
+    Returns
+    -------
+    DataFrame
+        A pandas DataFrame containing fish data.
+    """
+    logger.info("Loading fish")
     return _BARENTSWATCH.load(_FISH_TABLE)
 
 
 def _extract_locality():
+    """
+    Extracts locality data from a predefined data source.
+
+    Returns
+    -------
+    DataFrame
+        A pandas DataFrame containing locality data.
+    """
+    logger.info("Loading locality")
     return _BARENTSWATCH.load(_LOCALITY_TABLE)
 
 
 def _extract_weather():
+    """
+    Extracts weather data from a predefined data source.
+
+    Returns
+    -------
+    DataFrame
+        A pandas DataFrame containing weather data.
+    """
+    logger.info("Loading weather")
     return _FROST.load(_WEATHER_TABLE)
 
 
@@ -589,6 +693,17 @@ def _extract_weather():
 
 
 def download(state):
+    """
+    Handles the download process based on the state parameter.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application, containing flags and parameters
+        for downloading data.
+    """
+    logger.info("Starting download process.")
+
     state['flag']['downloading'] = True
 
     if state['parameter']['download'] == 'fish':
@@ -602,6 +717,7 @@ def download(state):
     elif state['parameter']['download'] == 'weather':
         download_weather(state)
     else:
+        logger.error("Download type not recognised.")
         pass
 
     state['flag']['downloading'] = False
@@ -609,6 +725,17 @@ def download(state):
 
 
 def update_data(state):
+    """
+    Updates data based on the current state and extracts necessary information.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary representing the state of the application, containing data and parameters
+        for updating and processing data.
+    """
+    logger.info("Updating data.")
+
     state['station_coordinates'] = _FROST.station_coordinates
 
     data_fish = False
@@ -640,6 +767,7 @@ def update_data(state):
         data_locality = True
         state['flag']['no_data_locality'] = False
     except AnalysisException:
+        logger.warning('No locality data.')
         state['flag']['no_data_locality'] = True
 
     try:
@@ -651,9 +779,12 @@ def update_data(state):
         state['parameter']['weather_select_columns'].state.pop('timestamp')
         state['flag']['no_data_weather'] = False
     except AnalysisException:
+        logger.warning('No weather data.')
         state['flag']['no_data_weather'] = True
 
     if data_fish and data_locality:
+        logger.info("Both fish and locality data found.")
+
         equal = state['data']['fish'][state['data']['fish']['localityno']
                                       == state['data']['locality']['localityno'].values[0]]
         state['parameter']['lon'] = float(equal['lon'].values[0])
@@ -668,10 +799,23 @@ def update_data(state):
         }
         weather_change(state)
     elif data_fish and not data_locality:
+        logger.info("Only fish data found.")
+
         state['selection'] = state['parameter']['locality'].state
 
 
 def weather_change(state):
+    """
+    Changes weather data source configuration based on the state parameter.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary containing the state of the application, particularly the 'parameter'
+        section with longitude, latitude, and count.
+    """
+    logger.info("Changing weather data source.")
+
     global _FROST
 
     _FROST = Frost(_FROST_ID,
@@ -680,8 +824,20 @@ def weather_change(state):
 
     state['station_coordinates'] = _FROST.station_coordinates
 
+    logger.info("Weather data source changed successfully.")
+
 
 def download_change(state):
+    """
+    Updates state flags based on the download parameters.
+
+    Parameters
+    ----------
+    state : dict
+        A dictionary containing the state of the application, particularly the 'parameter'
+        section with download type.
+    """
+    logger.info("Changing download type.")
     state['flag']['locality'] = state['parameter']['download'] == 'locality'
     state['flag']['weather'] = state['parameter']['download'] == 'weather'
 
